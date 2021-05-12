@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "225595075836",
+    "project_id": "test1-68fdb",
+    "storage_bucket": "test1-68fdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225595075836:android:65288c6c10cf7ccb6efb79",
+        "android_client_info": {
+          "package_name": "com.example.mds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225595075836-016mopq15qaehpjkqm704mi50t9a8bhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjZxI3KBBRO9XEWgXNE987NV-7MgrZi2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225595075836-016mopq15qaehpjkqm704mi50t9a8bhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225595075836:android:4104f9dc83d3c8956efb79",
+        "android_client_info": {
+          "package_name": "com.newsaholic.newsaholic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225595075836-016mopq15qaehpjkqm704mi50t9a8bhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjZxI3KBBRO9XEWgXNE987NV-7MgrZi2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225595075836-016mopq15qaehpjkqm704mi50t9a8bhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
