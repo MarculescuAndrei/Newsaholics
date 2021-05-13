@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsaholic/Authentication/home_page.dart';
+import 'package:newsaholic/Views/home_page.dart';
 import 'package:newsaholic/Authentication/login_page.dart';
 import 'package:newsaholic/styles.dart';
 
