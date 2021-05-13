@@ -14,14 +14,14 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  Future<void>_alertDialogBuilder() async {
+  Future<void>_alertDialogBuilder(String error) async {
     return showDialog(
       context: context,
       builder: (context){
         return AlertDialog(
           title: Text("Error"),
           content: Container(
-            child: Text("Rand txt"),
+            child: Text(error),
           ),
           actions: [
             FlatButton(
@@ -36,14 +36,40 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Future<String> createAccount() async {
+  Future<String> _createAccount() async {
     try{
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _registerEmail, password: _registerPassword);
       return null;
     }
-     catch(e){
+    on FirebaseAuthException catch(e) {
+      if(e.code == 'weak-password'){
+        return 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use'){
+        return 'The account already exists for that email.';
+      }
+      return e.message;
+    }
+    catch(e){
       return e.toString();
+    }
+  }
+
+  void _submitForm() async {
+    setState(() {
+      _registerFormLoading = true;
+    });
+
+    String _createAccountFeedback = await _createAccount();
+    if (_createAccountFeedback != null) {
+      _alertDialogBuilder(_createAccountFeedback);
+
+      setState(() {
+        _registerFormLoading = false;
+      });
+    }
+    else {
+    Navigator.pop(context);
     }
   }
 
@@ -100,13 +126,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                         focusNode: _passwordFocusNode,
                         isPasswordField: true,
+                        onSubmitted: (value){
+                          _submitForm();
+                        },
                       ),
                       CustomButton(
                           text: "Sign up",
                           onPressed:(){
-                            setState(() {
-                              _registerFormLoading = true;
-                            });
+
+                            _submitForm();
                           },
                           isLoading: _registerFormLoading,
                       )
