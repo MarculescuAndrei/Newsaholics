@@ -14,20 +14,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  // nu aici
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: FlatButton(
-          child: Text(FirebaseAuth.instance.currentUser.email),
-          onPressed: (){
-            FirebaseAuth.instance.signOut();
-          },
-        ),
-      ),
-    );
-  }
+  // // nu aici
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: Center(
+  //       child: FlatButton(
+  //         child: Text(FirebaseAuth.instance.currentUser.email),
+  //         onPressed: (){
+  //           FirebaseAuth.instance.signOut();
+  //         },
+  //       ),
+  //     ),
+  //   );
+  // }
 
 
   List<CategoryModel> categories = [];
@@ -38,7 +38,8 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-  Widget buildNews(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Text("News"),
             Text("aholic", style: TextStyle(
-              color: Colors.red
+              color: Colors.blue
             ),)
           ],
         ),
@@ -58,6 +59,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               height: 70,
               child: ListView.builder(
                 itemCount: categories.length,

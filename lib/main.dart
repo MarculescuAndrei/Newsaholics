@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,
         ),
+          primaryColor: Colors.white
       ),
       home: LandingPage(),
     );
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   Widget buildNews(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Newsaholic',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white,
