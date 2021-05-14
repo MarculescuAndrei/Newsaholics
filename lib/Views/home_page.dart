@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,19 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     categories = getCategories();
+
+    getNews();
   }
 
+  getNews() async {
+    News newsClass = News();
+    await newsClass.getNews();
+    articles = newsClass.news;
+
+    setState(() {
+      _loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,34 +64,54 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Text("News"),
             Text("aholic", style: TextStyle(
-              color: Colors.blue
+                color: Colors.blue
             ),)
           ],
         ),
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-
-            /// Categories
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              height: 70,
-              child: ListView.builder(
-                itemCount: categories.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index)
-              {
-                return CategoryTile(
-                  imageUrl: categories[index].imageUrl,
-                  categoryName: categories[index].categoryName,
-                );
-              }),
-            ),
-          ],
+      body: _loading ? Center(
+        child: Container(
+          child: CircularProgressIndicator(),
+        ),
+      ) : SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              /// Categories
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                height: 70,
+                child: ListView.builder(
+                    itemCount: categories.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index)
+                    {
+                      return CategoryTile(
+                        imageUrl: categories[index].imageUrl,
+                        categoryName: categories[index].categoryName,
+                      );
+                    }),
+              ),
+              /// Blogs
+              Container(
+                  child: ListView.builder(
+                      itemCount: articles.length,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return BlogTile(
+                            imageUrl: articles[index].urlToImage,
+                            title: articles[index].title,
+                            desc: articles[index].description
+                        );
+                      }
+                  )
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -120,6 +152,24 @@ class CategoryTile extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class BlogTile extends StatelessWidget {
+  final String imageUrl, title, desc;
+  BlogTile({@required this.imageUrl,@required this.title,@required this.desc});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Image.network(imageUrl),
+          Text(title),
+          Text(desc),
+        ],
       ),
     );
   }
