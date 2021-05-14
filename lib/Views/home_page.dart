@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsaholic/Helper/data.dart';
+import 'package:newsaholic/Helper/news.dart';
+import 'package:newsaholic/Models/article_model.dart';
 import 'package:newsaholic/Models/category_model.dart';
 import 'package:newsaholic/styles.dart';
 
@@ -29,14 +31,16 @@ class _HomePageState extends State<HomePage> {
   //   );
   // }
 
-
   List<CategoryModel> categories = [];
+  List<ArticleModel> articles = [];
+  bool _loading = true;
+
   @override
   void initState() {
     super.initState();
     categories = getCategories();
-
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +62,8 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         child: Column(
           children: <Widget>[
+
+            /// Categories
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
               height: 70,
@@ -72,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                   categoryName: categories[index].categoryName,
                 );
               }),
-            )
+            ),
           ],
         ),
       ),
