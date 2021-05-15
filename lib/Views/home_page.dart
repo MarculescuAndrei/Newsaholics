@@ -8,6 +8,7 @@ import 'package:newsaholic/Helper/news.dart';
 import 'package:newsaholic/Models/article_model.dart';
 import 'package:newsaholic/Models/category_model.dart';
 import 'package:newsaholic/Views/article_view.dart';
+import 'package:newsaholic/Views/category_view.dart';
 import 'package:newsaholic/styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -135,14 +136,21 @@ class _HomePageState extends State<HomePage> {
 
 class CategoryTile extends StatelessWidget {
 
-  final imageUrl, categoryName;
+  final String imageUrl, categoryName;
   CategoryTile({this.imageUrl, this.categoryName});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryNews(
+            category: categoryName.toLowerCase(),
+            )
+          )
+        );
       },
       child: Container(
         margin: EdgeInsets.only(right: 16),
