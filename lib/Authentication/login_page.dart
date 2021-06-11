@@ -81,64 +81,66 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.only(top:100.0),
-                child: Text(
-                  "Welcome fellow Newsaholic,\nLogin Here!",
-                  textAlign: TextAlign.center,
-                  style: Styles.boldHeading,
+        child: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top:100.0),
+                  child: Text(
+                    "Welcome fellow Newsaholic,\nLogin Here!",
+                    textAlign: TextAlign.center,
+                    style: Styles.boldHeading,
+                  ),
                 ),
-              ),
-              Column(
-                children: [
-                  CustomInput(
-                    hintText: "Email . . .",
-                    onChanged: (value){
-                      _loginEmail = value;
-                    },
-                    onSubmitted: (value){
-                      _passwordFocusNode.requestFocus();
-                    },
-                  ),
-                  CustomInput(
-                    hintText: "Password . . .",
-                    onChanged: (value){
-                      _loginPassword = value;
-                    },
-                    focusNode: _passwordFocusNode,
-                    isPasswordField: true,
-                    onSubmitted: (value){
-                      _submitForm();
-                    },
-                  ),
-                  CustomButton(
-                      text: "Login",
-                      onPressed:(){
+                Column(
+                  children: [
+                    CustomInput(
+                      hintText: "Email . . .",
+                      onChanged: (value){
+                        _loginEmail = value;
+                      },
+                      onSubmitted: (value){
+                        _passwordFocusNode.requestFocus();
+                      },
+                    ),
+                    CustomInput(
+                      hintText: "Password . . .",
+                      onChanged: (value){
+                        _loginPassword = value;
+                      },
+                      focusNode: _passwordFocusNode,
+                      isPasswordField: true,
+                      onSubmitted: (value){
                         _submitForm();
                       },
-                    isLoading: _loginFormLoading,
-                  )
-                ],
-              ),
-              CustomButton(
-                text: "Create an Account",
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegisterPage()
+                    ),
+                    CustomButton(
+                        text: "Login",
+                        onPressed:(){
+                          _submitForm();
+                        },
+                      isLoading: _loginFormLoading,
                     )
-                  );
-                },
-                outlineBtn: false,
-              ),
-            ],
-          )
+                  ],
+                ),
+                CustomButton(
+                  text: "Create an Account",
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterPage()
+                      )
+                    );
+                  },
+                  outlineBtn: false,
+                ),
+              ],
+            )
+          ),
         ),
       )
     );

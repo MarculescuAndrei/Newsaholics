@@ -65,6 +65,11 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            TextButton(
+              child: Text("Logout"),
+              onPressed: (){
+                FirebaseAuth.instance.signOut();
+              }),
             Text("News"),
             Text("aholic", style: TextStyle(
                 color: Colors.grey
