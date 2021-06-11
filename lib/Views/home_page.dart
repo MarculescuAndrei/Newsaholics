@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Text("News"),
             Text("aholic", style: TextStyle(
-                color: Colors.blue
+                color: Colors.grey
             ),)
           ],
         ),
@@ -221,7 +221,7 @@ class BlogTile extends StatelessWidget {
             Text(
                 desc,
                 style: TextStyle(
-                  color: Colors.red
+                  color: Colors.grey
                 )
             ),
           ],

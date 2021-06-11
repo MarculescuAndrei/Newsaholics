@@ -24,7 +24,7 @@ class _ArticleViewState extends State<ArticleView> {
           children: <Widget>[
             Text("News"),
             Text("aholic", style: TextStyle(
-                color: Colors.blue
+                color: Colors.grey
             ),)
           ],
         ),
