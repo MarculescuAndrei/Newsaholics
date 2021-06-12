@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsaholic/Authentication/landing_page.dart';
 import 'package:newsaholic/Helper/data.dart';
 import 'package:newsaholic/Helper/news.dart';
 import 'package:newsaholic/Models/article_model.dart';
@@ -10,6 +11,9 @@ import 'package:newsaholic/Models/category_model.dart';
 import 'package:newsaholic/Views/article_view.dart';
 import 'package:newsaholic/Views/category_view.dart';
 import 'package:newsaholic/styles.dart';
+
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -68,6 +72,11 @@ class _HomePageState extends State<HomePage> {
             TextButton(
               child: Text("Logout"),
               onPressed: (){
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LandingPage()),
+                );
                 FirebaseAuth.instance.signOut();
               }),
             Text("News"),

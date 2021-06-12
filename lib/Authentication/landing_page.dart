@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsaholic/Views/home_page.dart';
 import 'package:newsaholic/Authentication/login_page.dart';
+import 'package:newsaholic/main.dart';
 import 'package:newsaholic/styles.dart';
 
 class LandingPage extends StatelessWidget {
@@ -42,7 +43,7 @@ class LandingPage extends StatelessWidget {
                   if(_user == null){
                     return LoginPage();
                   }else {
-                    return HomePage();
+                    return WelcomePage();
                   }
                 }
 

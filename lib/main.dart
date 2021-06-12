@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +32,44 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: HomePage(),
+      home: WelcomePage(),
     );
   }
 }
 
+//check new branch
+
+class WelcomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _WelcomePageState();
+  }
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Welcome!'),
+        ),
+        body: Column(
+            children: [
+              Text(FirebaseAuth.instance.currentUser.email),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
+                  child: Text('Read News')
+              )
+            ]
+        )
+    );
+  }
+}
 //check new branch
