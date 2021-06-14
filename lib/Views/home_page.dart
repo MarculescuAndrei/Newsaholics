@@ -66,19 +66,23 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: TextButton(
+            child: Text("Logout",
+                style: TextStyle(color: Colors.black, fontSize: 14)
+            ),
+            onPressed: (){
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LandingPage()),
+              );
+              FirebaseAuth.instance.signOut();
+            }),
+        leadingWidth: 82.0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextButton(
-              child: Text("Logout"),
-              onPressed: (){
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LandingPage()),
-                );
-                FirebaseAuth.instance.signOut();
-              }),
+
             Text("News"),
             Text("aholic", style: TextStyle(
                 color: Colors.grey
