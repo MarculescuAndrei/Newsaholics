@@ -94,61 +94,63 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Container(
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top:100.0),
-                    child: Text(
-                      "Create a new Account!",
-                      textAlign: TextAlign.center,
-                      style: Styles.boldHeading,
+          child: SingleChildScrollView(
+            child: Container(
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top:100.0),
+                      child: Text(
+                        "Create a new Account!",
+                        textAlign: TextAlign.center,
+                        style: Styles.boldHeading,
+                      ),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      CustomInput(
-                        hintText: "Email . . .",
-                        onChanged: (value){
-                          _registerEmail = value;
-                        },
-                        onSubmitted: (value) {
-                          _passwordFocusNode.requestFocus();
-                        },
-                        textInputAction: TextInputAction.next,
-                      ),
-                      CustomInput(
-                        hintText: "Password . . .",
-                        onChanged: (value){
-                          _registerPassword = value;
-                        },
-                        focusNode: _passwordFocusNode,
-                        isPasswordField: true,
-                        onSubmitted: (value){
-                          _submitForm();
-                        },
-                      ),
-                      CustomButton(
-                          text: "Sign up",
-                          onPressed:(){
-
+                    Column(
+                      children: [
+                        CustomInput(
+                          hintText: "Email . . .",
+                          onChanged: (value){
+                            _registerEmail = value;
+                          },
+                          onSubmitted: (value) {
+                            _passwordFocusNode.requestFocus();
+                          },
+                          textInputAction: TextInputAction.next,
+                        ),
+                        CustomInput(
+                          hintText: "Password . . .",
+                          onChanged: (value){
+                            _registerPassword = value;
+                          },
+                          focusNode: _passwordFocusNode,
+                          isPasswordField: true,
+                          onSubmitted: (value){
                             _submitForm();
                           },
-                          isLoading: _registerFormLoading,
-                      )
-                    ],
-                  ),
-                  CustomButton(
-                    text: "Back to login",
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                    outlineBtn: false,
-                  ),
-                ],
-              )
+                        ),
+                        CustomButton(
+                            text: "Sign up",
+                            onPressed:(){
+
+                              _submitForm();
+                            },
+                            isLoading: _registerFormLoading,
+                        )
+                      ],
+                    ),
+                    CustomButton(
+                      text: "Back to login",
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      outlineBtn: false,
+                    ),
+                  ],
+                )
+            ),
           ),
         )
     );
