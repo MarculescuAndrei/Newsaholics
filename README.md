@@ -14,6 +14,12 @@ Our project is an **Android** application where a user can create an account and
 
 The full demo for our app is available on [YouTube ](https://www.youtube.com/watch?v=_3-12Zf0N6A "YouTube "), in Romanian.
 
+For a short preview, here are some main functionalities of our app:
+### Login & Main page:
+<img src="https://i.imgur.com/9k9ssqc.gif" width="250" height="550 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img  src="https://i.imgur.com/L9zQZxI.gif" width="250" height="550" />
+### Reading article & Logout:
+<img src="https://i.imgur.com/rkXnGxZ.gif" width="250" height="550 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img  src="https://i.imgur.com/wcFIe3B.gif" width="250" height="550" />
+
 ## User stories
 
 1. I want to make my own account for my personal news app and login with it. -> [User authentication with Firebase](https://github.com/MarculescuAndrei/Newsaholics/issues/15 "User authentication with Firebase")
