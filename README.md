@@ -1,4 +1,4 @@
-#Newsaholics
+# Newsaholics
 
 Project members:
 - [Marculescu Andrei](https://github.com/MarculescuAndrei "Marculescu Andrei")
