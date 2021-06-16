@@ -6,6 +6,7 @@ Project members:
 - [Dobrica Denis ](https://github.com/intMachine "Dobrica Denis ")
 - [Leonard Vlaicu](https://github.com/leonard-vlaicu "Leonard Vlaicu")
 
+We organised ourselves and our backlog on the projects tab for our GitHub repository, it can be found [here](https://github.com/MarculescuAndrei/Newsaholics/projects/1 "here").
 ## Project description
 
 Our project is an **Android** application where a user can create an account and login, he is then prompted with a welcome screen where the purpose of the app is briefly explained. When a user gets on the home page of the app, he is shown news articles fetched from [NewsAPI](https://newsapi.org "NewsAPI"), they are built on the screen with a preview image, a title and a subtitle. At the top of the home page a user is shown a couple of categories, as of this [version](https://github.com/MarculescuAndrei/Newsaholics/tree/V1.0 "version"), the categories are : **Entertainment, Business, Science** and **Sports**. When the user selects one of these categories he will then have articles shown to him from that specific topic. A user can tap on an article preview and open it within a browser window in the app. Whenever a user wants to logout of the application, he can do so by pressing the **Logout** button in the AppBar.
@@ -44,3 +45,75 @@ For a short preview, here are some main functionalities of our app:
 We use a database within the [Firebase](https://firebase.google.com "Firebase") platform to hold the accounts that users can create on our app. An account is composed of an email address and a password, Firebase lets us see when the account was created, when it had the last login and it offers as a unique ID to easily find and use a specific account instance.
 
 [![Firebase](https://i.imgur.com/gtwi9mA.jpg "Firebase")](https://i.imgur.com/gtwi9mA.jpg "Firebase")
+
+------------
+
+
+## Source control 
+- [Branch creation](https://github.com/MarculescuAndrei/Newsaholics/network "Branch creation")
+We created branches such as email_authentication and news_home to implement the main parts of our project.
+- [Commits](https://github.com/MarculescuAndrei/Newsaholics/commits/main "Commits")
+We had 30 commits in total regarding project development
+
+## Bug reporting
+
+We encountered a bug caused by 'pixel overflow' whenever the keyboard would be used when writing something on the screen.
+
+<img src="https://i.imgur.com/jMLGBzI.png" width="250" height="550 " />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We solved the bug in this [issue](https://github.com/MarculescuAndrei/Newsaholics/issues/12 "issue").
+
+
+------------
+
+## Build tool
+
+We used the Gradle build tool incorporated in Android Studio to create an APK for our app, it can be found in this [release](https://github.com/MarculescuAndrei/Newsaholics/releases "release"). We downloaded the APK and installed it on our Android devices to check if everything is working correctly.
+
+<img src="https://i.imgur.com/StJA8Dy.jpg" width="450" height="540 " />
+
+
+------------
+## Refractoring and Code standards
+
+**Refractoring** - To make our code more efficient, we created custom widgets for inputs and buttons, so whenever we need to place a button/input, we are only importing it from this [directory](https://github.com/MarculescuAndrei/Newsaholics/tree/main/lib/CustomWidgets "directory"), and including it in our pages.
+
+Here is an example of the custom button being used in the [login page](https://github.com/MarculescuAndrei/Newsaholics/blob/main/lib/Authentication/login_page.dart "login page")
+
+	CustomButton(
+                      text: "Login",
+                      onPressed:(){
+                        _submitForm();
+                      },
+                    isLoading: _loginFormLoading,
+                  )
+
+**Code standards** - We followed the [effective Dart](https://dart.dev/guides/language/effective-dart/style "effective Dart") documentation page where it is explained how to style and write our code. 
+
+One good example where rules for indentation, naming and code placement are being followed is [here](https://github.com/MarculescuAndrei/Newsaholics/blob/main/lib/Views/article_view.dart "here"), where we created the way an article is shown on a screen through a widget:
+
+	Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:  AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("News"),
+            Text("aholic", style: TextStyle(
+                color: Colors.grey
+            ),)
+          ],
+        ),
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: WebView(
+          initialUrl: widget.blogUrl,
+          onWebViewCreated: ((WebViewController webViewController) {
+            _completer.complete(webViewController);
+          }),
+        ),
+      ),
+    );
+  
