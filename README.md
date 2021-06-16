@@ -72,7 +72,7 @@ We used the Gradle build tool incorporated in Android Studio to create an APK fo
 
 
 ------------
-## Refractoring and Code standards
+## Refactoring and Code standards
 
 **Refractoring** - To make our code more efficient, we created custom widgets for inputs and buttons, so whenever we need to place a button/input, we are only importing it from this [directory](https://github.com/MarculescuAndrei/Newsaholics/tree/main/lib/CustomWidgets "directory"), and including it in our pages.
 
